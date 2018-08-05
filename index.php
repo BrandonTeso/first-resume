@@ -1,3 +1,16 @@
+<?php 
+public function shouldCreateBlob()
+    {
+        $expectedValue = ['blob' => 'some data'];
+        $data = ['content' => 'some cotent', 'encoding' => 'utf8'];
+        $api = $this->getApiMock();
+        $api->expects($this->once())
+            ->method('post')
+            ->with('/repos/l3l0/l3l0repo/git/blobs', $data)
+            ->will($this->returnValue($expectedValue));
+        $this->assertEquals($expectedValue, $api->create('l3l0', 'l3l0repo', $data));
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
